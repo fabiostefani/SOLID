@@ -17,8 +17,8 @@ namespace fabiostefani.io.solid.srp
         public void FolhaPagamento_DeveEnviarEmail()
         {
             var funcionario = new FuncionarioSolucao("Funcionario", 1000);
-            var enviarEmailFuncionario = new EnviarEmailFuncionario(funcionario);
-            var exception = Record.Exception(() => enviarEmailFuncionario.Enviar());            
+            var enviarEmail = new EnviarEmail();
+            var exception = Record.Exception(() => enviarEmail.Enviar("fabiostefani@gmail.com", "Este é um simples ,muito simples email", "Este é o corpo do email"));            
             Assert.Null(exception);
         }
     }

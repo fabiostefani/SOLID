@@ -3,22 +3,15 @@ using System.Net.Mail;
 
 namespace fabiostefani.io.solid.srp
 {
-    public class EnviarEmailFuncionario
-    {
-        private readonly FuncionarioSolucao funcionario;
-        public EnviarEmailFuncionario(FuncionarioSolucao funcionario)
-        {
-            this.funcionario = funcionario;
-
-        }
-
-        public void Enviar()
+    public class EnviarEmail
+    {        
+        public void Enviar(string para, string assunto, string corpo)
         {
             MailMessage mail = new MailMessage();            
             mail.From = new MailAddress("fabiostefani@gmail.com");
-            mail.To.Add("fabiostefani@gmail.com");
-            mail.Subject = "Processamento de Imposto";
-            mail.Body = "Seu imposto foi processado";            
+            mail.To.Add(para);
+            mail.Subject = assunto;
+            mail.Body = corpo;            
             using (var smtp = new SmtpClient("smtp.gmail.com"))
             {
                 smtp.EnableSsl = true;

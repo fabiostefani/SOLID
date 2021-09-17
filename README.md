@@ -4,7 +4,7 @@
 <br>
 
 Projeto para demonstrar o código de exemplos de SOLID.
-O projeto está estrutura em um projeto console para cada princípio. E cada princípio contém a class de Violação e sua solução.
+O projeto está estruturado em um projeto console para cada princípio. E cada princípio contém a class de Violação e sua solução.
 
 Iremos ver os princípios:
 * SRP

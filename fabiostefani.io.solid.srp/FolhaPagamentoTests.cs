@@ -7,8 +7,8 @@ namespace fabiostefani.io.solid.srp
         [Fact]
         public void FolhaPagamento_DeveCalcularImposto()
         {
-            var funcionario = new FuncionarioSolucao("Funcionario", 1000);
-            var calculadoraImposto = new CalcularImpostoFuncionario(funcionario);
+            var funcionario = new FuncionarioViolacao("Funcionario", 1000);
+            var calculadoraImposto = new FolhaPagamentoViolacao(funcionario);
             var imposto = calculadoraImposto.Calcular();
             Assert.Equal(100, imposto);
         }
@@ -16,9 +16,27 @@ namespace fabiostefani.io.solid.srp
         [Fact]
         public void FolhaPagamento_DeveEnviarEmail()
         {
+            var funcionario = new FuncionarioViolacao("Funcionario", 1000);
+            var enviarEmail = new FolhaPagamentoViolacao(funcionario);
+            var exception = Record.Exception(() => enviarEmail.EnvairEmail());            
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void FolhaPagamentoSolucao_DeveCalcularImposto()
+        {
             var funcionario = new FuncionarioSolucao("Funcionario", 1000);
-            var enviarEmail = new EnviarEmail();
-            var exception = Record.Exception(() => enviarEmail.Enviar("fabiostefani@gmail.com", "Este é um simples ,muito simples email", "Este é o corpo do email"));            
+            var calculadoraImposto = new FolhaPagamentoSolucao(funcionario);
+            var imposto = calculadoraImposto.Calcular();
+            Assert.Equal(100, imposto);
+        }
+
+        [Fact]
+        public void FolhaPagamentoSolucao_DeveEnviarEmail()
+        {
+            var funcionario = new FuncionarioSolucao("Funcionario", 1000);
+            var enviarEmail = new FolhaPagamentoSolucao(funcionario);
+            var exception = Record.Exception(() => enviarEmail.EnviarEmail());            
             Assert.Null(exception);
         }
     }

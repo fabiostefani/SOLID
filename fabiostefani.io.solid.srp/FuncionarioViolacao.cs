@@ -26,14 +26,14 @@ namespace fabiostefani.io.solid.srp
             mail.To.Add("fabiostefani@gmail.com");
             mail.Subject = "Este é um simples ,muito simples email";
             mail.Body = "Este é o corpo do email";                        
-            using (var smtp = new SmtpClient("smtp.gmail.com"))
+            using (var smtp = new SmtpClientFake("smtp.gmail.com"))
             {
                 smtp.EnableSsl = true;
                 smtp.Port = 587;
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.UseDefaultCredentials = false;                    
                 smtp.Credentials = new NetworkCredential("fabiostefani@gmail.com", "Helen@.123");
-                smtp.Send(mail);
+                smtp.SendEmail(mail);
             }            
         }
     }

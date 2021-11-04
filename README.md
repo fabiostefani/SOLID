@@ -1,5 +1,5 @@
 # SOLID
-<div style="text-align:center"><img src="https://i.imgur.com/HM1rUb5.png" /></div>
+<div style="text-align:center"><img src="https://i.imgur.com/HM1rUb5.png?1" /></div>
 
 <br>
 
